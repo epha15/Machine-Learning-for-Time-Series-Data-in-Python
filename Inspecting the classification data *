@@ -1,0 +1,18 @@
+# Glob: https://docs.python.org/2/library/glob.html
+# Librosa: https://librosa.github.io/librosa/
+
+import librosa as lr
+from glob import glob
+
+# List all the wav files in the folder
+audio_files = glob(data_dir + '/*.wav')
+
+# Read in the first audio file, create the time array
+audio, sfreq = lr.load('./files/murmur__201108222256.wav')
+time = np.arange(0, len(audio)) / sfreq
+
+# Plot audio over time
+fig, ax = plt.subplots()
+ax.plot(time, audio)
+ax.set(xlabel='Time (s)', ylabel='Sound Amplitude')
+plt.show()
