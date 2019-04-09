@@ -9,4 +9,13 @@ tempos = np.array(tempos)
 # Calculate statistics of each tempo
 tempos_mean = tempos.mean(axis=-1)
 tempos_std = tempos.std(axis=-1)
-tempos_max = tempos.max(axis=-1)
+tempos_max = tempos.max(axis=-1
+
+# Create the X and y arrays
+X = np.column_stack([means, stds, maxs, tempos_mean, tempos_std, tempos_max])
+y = labels.reshape([-1, 1])
+
+# Fit the model and score on testing data
+percent_score = cross_val_score(model, X, y, cv=5)
+print(percent_score)
+print(np.mean(percent_score))
